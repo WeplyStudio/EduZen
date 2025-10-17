@@ -89,6 +89,48 @@
       "description": "Building image 1",
       "imageUrl": "https://picsum.photos/seed/building1/600/400",
       "imageHint": "children learning"
+    },
+    {
+      "id": "curriculum-1",
+      "description": "Curriculum image",
+      "imageUrl": "https://picsum.photos/seed/curriculum1/800/600",
+      "imageHint": "students in classroom"
+    },
+    {
+      "id": "facilities-1",
+      "description": "Facilities image",
+      "imageUrl": "https://picsum.photos/seed/facilities1/800/800",
+      "imageHint": "modern library"
+    },
+    {
+      "id": "student-1",
+      "description": "Student image 1",
+      "imageUrl": "https://picsum.photos/seed/student1/200/200",
+      "imageHint": "happy student"
+    },
+    {
+      "id": "student-2",
+      "description": "Student image 2",
+      "imageUrl": "https://picsum.photos/seed/student2/200/200",
+      "imageHint": "student learning"
+    },
+    {
+      "id": "student-3",
+      "description": "Student image 3",
+      "imageUrl": "https://picsum.photos/seed/student3/200/200",
+      "imageHint": "student reading"
+    },
+    {
+      "id": "student-4",
+      "description": "Student image 4",
+      "imageUrl": "https://picsum.photos/seed/student4/200/200",
+      "imageHint": "student writing"
+    },
+    {
+      "id": "student-5",
+      "description": "Student image 5",
+      "imageUrl": "https://picsum.photos/seed/student5/200/200",
+      "imageHint": "student with books"
     }
   ]
 }
