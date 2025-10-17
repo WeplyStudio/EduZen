@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Sun, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Users } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
@@ -39,6 +39,8 @@ function TestimonialCard({ name, role, avatar, children }: { name: string; role:
 export default function LandingPage() {
   const heroImage1 =
     PlaceHolderImages.find((img) => img.id === 'hero-1')?.imageUrl || '';
+  const heroImage2 =
+    PlaceHolderImages.find((img) => img.id === 'hero-2')?.imageUrl || '';
   const aboutImage =
     PlaceHolderImages.find((img) => img.id === 'building-1')?.imageUrl || '';
   const ctaImage =
@@ -50,8 +52,8 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-full z-50">
-        <div className="mx-auto flex h-16 w-3/4 items-center justify-between rounded-full bg-card/80 px-6 backdrop-blur-sm shadow-md border border-border/50">
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-5xl z-50">
+        <div className="mx-auto flex h-16 w-full items-center justify-between rounded-full bg-card/80 px-6 backdrop-blur-sm shadow-md border border-border/50">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
@@ -70,26 +72,56 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-grow">
-        <section className="relative text-center pt-40 pb-32 px-4">
-          <div className="relative z-10 max-w-4xl mx-auto">
-            <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-headline tracking-tight">
-              Nurturing Future Leaders with the Cambridge Curriculum
-            </h2>
-            <p className="mt-8 text-muted-foreground max-w-2xl mx-auto text-lg">
-              Since 2009, Kinarya Grasia has been providing exceptional education for students from Playground and Kindergarten to Elementary and Junior High School.
-            </p>
-            <div className="mt-8">
-              <Button size="lg" className="rounded-full h-12 text-base px-8" asChild>
-                <Link href="/dashboard">
-                    Enroll Now <ArrowRight className="ml-2" />
-                </Link>
-              </Button>
+        <section className="relative pt-32 pb-24 px-4">
+            <div className="absolute top-0 left-0 w-full h-full bg-grid-black/[0.05] dark:bg-grid-white/[0.05]">
+                <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>
             </div>
-          </div>
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-          </div>
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 className="text-5xl sm:text-6xl font-extrabold font-headline tracking-tight">
+                            Nurturing Future Leaders with the Cambridge Curriculum
+                        </h2>
+                        <p className="mt-6 text-muted-foreground text-lg max-w-xl">
+                            Since 2009, Kinarya Grasia provides exceptional education from Playground to Junior High, preparing students for global success.
+                        </p>
+                        <div className="mt-8">
+                            <Button size="lg" className="rounded-full h-12 text-base px-8" asChild>
+                                <Link href="/dashboard">
+                                    Enroll Now <ArrowRight className="ml-2" />
+                                </Link>
+                            </Button>
+                        </div>
+                    </div>
+                     <div className="grid grid-cols-2 gap-4">
+                        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg group">
+                            <Image
+                                src={heroImage1}
+                                alt="Happy student"
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                data-ai-hint="happy student"
+                            />
+                        </div>
+                        <div className="space-y-4">
+                            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
+                                <Image
+                                    src={heroImage2}
+                                    alt="Student learning"
+                                    fill
+                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    data-ai-hint="student learning"
+                                />
+                            </div>
+                            <div className="bg-card p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center">
+                                <Star className="h-8 w-8 text-primary mb-2"/>
+                                <p className="text-2xl font-bold font-headline">15+</p>
+                                <p className="text-sm text-muted-foreground">Years of Excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section id="about" className="py-16 sm:py-24">
@@ -240,3 +272,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    

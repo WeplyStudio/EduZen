@@ -27,14 +27,14 @@
     {
       "id": "hero-1",
       "description": "Hero image 1",
-      "imageUrl": "https://picsum.photos/seed/hero1/400/300",
+      "imageUrl": "https://picsum.photos/seed/hero1/300/400",
       "imageHint": "happy student"
     },
     {
       "id": "hero-2",
       "description": "Hero image 2",
-      "imageUrl": "https://picsum.photos/seed/hero2/200/250",
-      "imageHint": "happy student"
+      "imageUrl": "https://picsum.photos/seed/hero2/400/300",
+      "imageHint": "student learning"
     },
     {
       "id": "course-1",
