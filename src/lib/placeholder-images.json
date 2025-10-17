@@ -3,13 +3,13 @@
     {
       "id": "user-1",
       "description": "User avatar 1",
-      "imageUrl": "https://picsum.photos/seed/1/40/40",
+      "imageUrl": "https://picsum.photos/seed/user1/40/40",
       "imageHint": "person portrait"
     },
     {
       "id": "user-2",
       "description": "User avatar 2",
-      "imageUrl": "https://picsum.photos/seed/2/40/40",
+      "imageUrl": "https://picsum.photos/seed/user2/40/40",
       "imageHint": "person portrait"
     },
     {
@@ -27,7 +27,7 @@
     {
       "id": "hero-1",
       "description": "Hero image 1",
-      "imageUrl": "https://picsum.photos/seed/hero1/200/250",
+      "imageUrl": "https://picsum.photos/seed/hero1/400/300",
       "imageHint": "happy student"
     },
     {
