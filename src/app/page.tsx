@@ -2,10 +2,12 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Users, Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function FeatureCard({ icon, title, subtitle }: { icon: React.ReactNode; title:string; subtitle: string;}) {
     return (
@@ -37,6 +39,8 @@ function TestimonialCard({ name, role, avatar, children }: { name: string; role:
 }
 
 export default function LandingPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   const heroImage1 =
     PlaceHolderImages.find((img) => img.id === 'hero-1')?.imageUrl || '';
   const heroImage2 =
@@ -50,6 +54,18 @@ export default function LandingPage() {
   const user2Avatar =
     PlaceHolderImages.find((img) => img.id === 'user-2')?.imageUrl || '';
 
+  const navItems = [
+      { href: "#about", label: "About Us" },
+      { href: "#programs", label: "Programs" },
+      { href: "#features", label: "Why Us" },
+  ]
+
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[85%] z-50">
@@ -58,17 +74,47 @@ export default function LandingPage() {
             <GraduationCap className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
           </div>
-          <nav className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-1">
               <Link href="#about" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">About Us</Link>
               <Link href="#programs" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Programs</Link>
               <Link href="#features" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Why Us</Link>
-          </nav>
-          <Button asChild className="rounded-full">
-            <Link href="/dashboard">
-              Student Portal
-            </Link>
-          </Button>
+              <Button asChild className="rounded-full ml-2">
+                  <Link href="/dashboard">
+                  Student Portal
+                  </Link>
+              </Button>
+          </div>
+          <div className="md:hidden">
+            <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full">
+              {menuOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
+              <span className="sr-only">Toggle Menu</span>
+            </Button>
+          </div>
         </div>
+         <AnimatePresence>
+          {menuOpen && (
+              <motion.div 
+                variants={menuVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                className="absolute top-20 left-0 w-full bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border border-border/50 overflow-hidden"
+              >
+                  <div className="flex flex-col items-center p-4 gap-2">
+                      {navItems.map(item => (
+                          <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="text-base font-medium hover:bg-primary/10 rounded-full w-full text-center py-2 transition-colors">
+                              {item.label}
+                          </Link>
+                      ))}
+                      <Button asChild className="rounded-full mt-2 w-full">
+                          <Link href="/dashboard">
+                          Student Portal
+                          </Link>
+                      </Button>
+                  </div>
+              </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <main className="flex-grow">
@@ -231,7 +277,7 @@ export default function LandingPage() {
                     <h4 className="font-bold font-headline mb-4 text-white">Programs</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary transition-colors">Playground</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Kindergarten</Link></li>
+                        <li><Link href="#" className="hover:text-primary transition-colors">Kindergarten</Link>_</li>
                         <li><Link href="#" className="hover:text-primary transition-colors">Elementary</Link></li>
                         <li><Link href="#" className="hover:text-primary transition-colors">Junior High</Link></li>
                     </ul>
@@ -272,6 +318,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
-    
