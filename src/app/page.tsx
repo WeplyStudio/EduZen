@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Check, CheckCircle, CheckSquare, Heart, Star, Sun, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, Check, CheckCircle, Heart, Star, Users, CheckSquare, Sun } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -22,8 +22,8 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 container z-50">
-        <div className="mx-auto flex h-16 max-w-4xl items-center justify-between rounded-full bg-white/70 px-6 backdrop-blur-sm shadow-md border border-white/50">
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-full z-50">
+        <div className="mx-auto flex h-16 w-3/4 items-center justify-between rounded-full bg-white/70 px-6 backdrop-blur-sm shadow-md border border-white/50">
           <div className="flex items-center gap-2">
             <BookOpen className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold font-headline">Edukids</h1>
@@ -285,5 +285,7 @@ function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React
         </div>
     )
 }
+
+    
 
     
