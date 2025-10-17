@@ -3,9 +3,33 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Check, CheckCircle, Heart, Star, Sun, Users, CheckSquare } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+
+function CourseCard({ imageSrc, title, color }: { imageSrc?: string; title: string; color: string }) {
+  return (
+    <div className={`${color} rounded-2xl p-6`}>
+        {imageSrc && (
+            <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                <Image src={imageSrc} alt={title} fill className="object-cover" />
+            </div>
+        )}
+        <h4 className="text-xl font-bold font-headline text-white">{title}</h4>
+    </div>
+  )
+}
+
+function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React.ReactNode; title:string; subtitle: string; color: string; iconColor: string; }) {
+    return (
+        <div className="flex flex-col items-center">
+            <div className={`p-4 rounded-full ${color}`}>
+                <div className={`h-8 w-8 ${iconColor}`}>{icon}</div>
+            </div>
+            <p className="mt-4 font-semibold text-foreground">{title}</p>
+            <p className="text-sm text-muted-foreground">{subtitle}</p>
+        </div>
+    )
+}
 
 export default function LandingPage() {
   const heroImage1 =
@@ -64,8 +88,10 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="mt-8">
-              <Button size="lg" className="rounded-full h-12 text-base px-8">
-                Start learning <ArrowRight className="ml-2" />
+              <Button size="lg" className="rounded-full h-12 text-base px-8" asChild>
+                <Link href="/dashboard">
+                    Start learning <ArrowRight className="ml-2" />
+                </Link>
               </Button>
             </div>
              <p className="mt-8 text-muted-foreground max-w-md mx-auto">
@@ -80,28 +106,28 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-12 bg-card text-card-foreground">
+        <section className="py-12 bg-[#2D2D2D] text-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div className="flex items-center justify-center gap-4">
                         <div className="bg-red-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-red-400" /></div>
                         <div>
                             <p className="text-4xl font-bold">50+</p>
-                            <p className="mt-1 text-muted-foreground">Total Courses</p>
+                            <p className="mt-1 text-white/70">Total Courses</p>
                         </div>
                     </div>
                     <div className="flex items-center justify-center gap-4">
                         <div className="bg-yellow-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-yellow-400" /></div>
                         <div>
                             <p className="text-4xl font-bold">12K+</p>
-                            <p className="mt-1 text-muted-foreground">Total Students</p>
+                            <p className="mt-1 text-white/70">Total Students</p>
                         </div>
                     </div>
                      <div className="flex items-center justify-center gap-4">
                         <div className="bg-green-500/20 p-3 rounded-lg"><CheckSquare className="h-6 w-6 text-green-400" /></div>
                         <div>
                             <p className="text-4xl font-bold">70+</p>
-                            <p className="mt-1 text-muted-foreground">Total Videos</p>
+                            <p className="mt-1 text-white/70">Total Videos</p>
                         </div>
                     </div>
                 </div>
@@ -143,12 +169,12 @@ export default function LandingPage() {
                     <div className="bg-yellow-300 rounded-2xl p-8">
                         <h4 className="text-3xl font-bold font-headline text-yellow-800">Confidence that builds a brighter future.</h4>
                         <p className="mt-2 text-yellow-700">We care about your child's future, we are the best choice.</p>
-                        <Button variant="outline" className="mt-6 rounded-full bg-white text-yellow-800 border-yellow-800">Learn More</Button>
+                        <Button variant="outline" className="mt-6 rounded-full bg-white text-yellow-800 border-yellow-800 hover:bg-white/80 hover:text-yellow-800">Learn More</Button>
                     </div>
                      <div className="bg-red-200 rounded-2xl p-8">
                         <h4 className="text-3xl font-bold font-headline text-red-800">Helping kids to shoot their dreams.</h4>
                         <p className="mt-2 text-red-700">We are a team of professionals who are passionate about education.</p>
-                        <Button variant="outline" className="mt-6 rounded-full bg-white text-red-800 border-red-800">Learn More</Button>
+                        <Button variant="outline" className="mt-6 rounded-full bg-white text-red-800 border-red-800 hover:bg-white/80 hover:text-red-800">Learn More</Button>
                     </div>
                 </div>
                  <div className="relative h-[500px]">
@@ -178,7 +204,9 @@ export default function LandingPage() {
                       <p className="text-muted-foreground">Awesome review from parents</p>
                   </div>
               </div>
-              <Button className="mt-8 rounded-full h-12 text-base px-8">Get Started</Button>
+              <Button className="mt-8 rounded-full h-12 text-base px-8" asChild>
+                <Link href="/dashboard">Get Started</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -214,42 +242,42 @@ export default function LandingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                 <div>
-                    <h4 className="font-bold font-headline mb-4">For Pre-School</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">For Pre-School</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary">For Kindergarten</Link></li>
                         <li><Link href="#" className="hover:text-primary">For School</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4">About us</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">About us</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary">Career</Link></li>
                         <li><Link href="#" className="hover:text-primary">Press & Media</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4">Profile</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">Profile</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary">Update live</Link></li>
                         <li><Link href="#" className="hover:text-primary">Subscription</Link></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 className="font-bold font-headline mb-4">Contact</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">Contact</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary">FAQs</Link></li>
                         <li><Link href="#" className="hover:text-primary">Help</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4">In a rush?</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">In a rush?</h4>
                      <p className="text-sm text-muted-foreground">We're on Instagram and Twitter</p>
                 </div>
             </div>
           <div className="mt-12 border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
              <div className="flex items-center gap-2">
                 <BookOpen className="h-7 w-7 text-primary" />
-                <h2 className="text-xl font-bold font-headline">Edukids</h2>
+                <h2 className="text-xl font-bold font-headline text-white">Edukids</h2>
             </div>
             <p className="text-muted-foreground mt-4 md:mt-0">&copy; {new Date().getFullYear()} Edukids. All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
@@ -261,31 +289,6 @@ export default function LandingPage() {
       </footer>
     </div>
   );
-}
-
-function CourseCard({ imageSrc, title, color }: { imageSrc?: string; title: string; color: string }) {
-  return (
-    <div className={`${color} rounded-2xl p-6`}>
-        {imageSrc && (
-            <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                <Image src={imageSrc} alt={title} fill className="object-cover" />
-            </div>
-        )}
-        <h4 className="text-xl font-bold font-headline text-white">{title}</h4>
-    </div>
-  )
-}
-
-function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React.ReactNode; title:string; subtitle: string; color: string; iconColor: string; }) {
-    return (
-        <div className="flex flex-col items-center">
-            <div className={`p-4 rounded-full ${color}`}>
-                <div className={`h-8 w-8 ${iconColor}`}>{icon}</div>
-            </div>
-            <p className="mt-4 font-semibold text-foreground">{title}</p>
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
-        </div>
-    )
 }
 
     
