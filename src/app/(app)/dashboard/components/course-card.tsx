@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
 type CourseCardProps = {
@@ -10,32 +11,37 @@ type CourseCardProps = {
   title: string;
   imageUrl?: string;
   imageHint?: string;
-  color?: string;
+  color?: string; // Not used in this version, but kept for data compatibility
 };
 
-export function CourseCard({ title, imageUrl, imageHint, color }: CourseCardProps) {
+export function CourseCard({ title, imageUrl, imageHint }: CourseCardProps) {
   return (
-    <div
-      className={cn("rounded-2xl p-6 flex flex-col justify-between min-h-[250px]", color)}
-    >
-        {imageUrl && (
-            <div className="relative h-32 mb-4 rounded-lg overflow-hidden">
-            <Image
-                src={imageUrl}
-                alt={title}
-                fill
-                className="object-cover"
-                data-ai-hint={imageHint}
-            />
+    <Card className="overflow-hidden flex flex-col group shadow-sm">
+       {imageUrl && (
+            <div className="relative h-40 w-full overflow-hidden">
+                <Image
+                    src={imageUrl}
+                    alt={title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    data-ai-hint={imageHint}
+                />
             </div>
         )}
-      <h4 className="text-xl font-bold font-headline text-white">{title}</h4>
-      <Button
-        variant="ghost"
-        className="justify-start p-0 h-auto text-white hover:text-white/80 mt-4"
-      >
-        Learn more <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
-    </div>
+        <CardHeader>
+             <CardTitle className="text-lg font-bold font-headline">{title}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex-grow">
+            {/* Future content can go here */}
+        </CardContent>
+        <CardFooter>
+            <Button
+                variant="ghost"
+                className="justify-start p-0 h-auto text-primary hover:text-primary/80"
+            >
+                Learn more <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+      </CardFooter>
+    </Card>
   );
 }

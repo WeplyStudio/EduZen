@@ -22,8 +22,8 @@ type CourseStackProps = {
 
 export function CourseStack({
   items,
-  offset = 10,
-  scaleFactor = 0.06,
+  offset = 12,
+  scaleFactor = 0.05,
 }: CourseStackProps) {
   const [cards, setCards] = useState(items);
 
@@ -44,7 +44,7 @@ export function CourseStack({
   };
 
   return (
-    <div className="relative h-64 w-full md:h-80">
+    <div className="relative h-80 w-full md:h-96">
       {cards.map((card, index) => {
         const isTopCard = index === cards.length - 1;
         return (
@@ -62,21 +62,21 @@ export function CourseStack({
           >
              <div
                 className={cn(
-                  "rounded-2xl p-6 flex flex-col justify-between min-h-[250px] md:min-h-[300px] cursor-pointer",
-                  isTopCard && "cursor-default"
+                  "rounded-2xl p-6 flex flex-col justify-between min-h-[280px] md:min-h-[320px] cursor-pointer bg-card shadow-lg",
+                  isTopCard ? "cursor-default" : "hover:translate-y-[-4px]",
+                  "transition-transform"
                 )}
-                style={{ backgroundColor: card.color ? card.color : 'transparent' }}
                 onClick={() => !isTopCard && handleCardClick(card.id)}
             >
                 <div className="flex justify-between items-start">
-                    <h4 className="text-xl md:text-2xl font-bold font-headline text-white max-w-[70%]">{card.title}</h4>
+                    <h4 className="text-xl md:text-2xl font-bold font-headline text-foreground max-w-[70%]">{card.title}</h4>
                     {card.imageUrl && (
-                        <div className="relative h-20 w-20 md:h-24 md:w-24">
+                        <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-lg overflow-hidden">
                         <Image
                             src={card.imageUrl}
                             alt={card.title}
                             fill
-                            className="object-cover rounded-lg"
+                            className="object-cover"
                             data-ai-hint={card.imageHint}
                         />
                         </div>
@@ -84,10 +84,10 @@ export function CourseStack({
                 </div>
                 {isTopCard && (
                     <Button
-                        variant="ghost"
-                        className="justify-start p-0 h-auto text-white hover:text-white/80 mt-4 w-fit"
+                        variant="default"
+                        className="rounded-full w-fit"
                     >
-                        Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                        Continue Learning <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                 )}
             </div>
