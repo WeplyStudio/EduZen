@@ -76,14 +76,6 @@ export default function LandingPage() {
             <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
           </div>
           
-          <nav className="hidden md:flex items-center gap-6">
-            {navItems.map(item => (
-                <Link key={item.href} href={item.href} className="text-sm font-medium hover:text-primary transition-colors">
-                    {item.label}
-                </Link>
-            ))}
-          </nav>
-          
           <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full">
               {menuOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
@@ -191,7 +183,7 @@ export default function LandingPage() {
         </section>
 
         <section id="programs" className="py-16 sm:py-24 bg-secondary">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <h3 className="text-4xl font-bold font-headline text-foreground">Our Programs</h3>
             <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We offer a comprehensive educational journey for every stage of your child's development.</p>
             <div className="mt-12 w-full">
@@ -293,7 +285,7 @@ export default function LandingPage() {
                 <div>
                     <h4 className="font-bold font-headline mb-4 text-white">Contact</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li><Link href="#" className="hover:text-primary transition-colors">info@kinaryagrasia.sch.id</Link></li>
+                        <li className="break-all"><Link href="#" className="hover:text-primary transition-colors">info@kinaryagrasia.sch.id</Link></li>
                         <li><Link href="#" className="hover:text-primary transition-colors">+62 123 4567 890</Link></li>
                     </ul>
                 </div>
