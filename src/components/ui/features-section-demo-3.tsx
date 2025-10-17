@@ -129,24 +129,36 @@ export const SkeletonOne = () => {
 };
 
 export const SkeletonThree = () => {
-    const facilitiesImg = PlaceHolderImages.find(img => img.id === 'facilities-1')?.imageUrl || '';
+  const facilitiesImg = PlaceHolderImages.find(img => img.id === 'facilities-1')?.imageUrl || '';
+  const variants = {
+    initial: {
+      y: 0,
+    },
+    animate: {
+      y: -20,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
   return (
-    <div
-      className="relative flex gap-10 h-full group/image"
+    <motion.div
+      initial="initial"
+      whileHover="animate"
+      className="relative flex-1 w-full h-full min-h-[10rem] md:min-h-[20rem] bg-card rounded-xl overflow-hidden"
     >
-      <div className="w-full  mx-auto bg-transparent group h-full">
-        <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
-          <IconBuilding className="h-20 w-20 absolute z-10 inset-0 text-primary m-auto " />
-          <Image
+        <Image
             src={facilitiesImg}
             alt="Modern Facilities"
             fill
-            className="h-full w-full aspect-square object-cover object-center rounded-sm blur-none group-hover/image:blur-md transition-all duration-200"
-             data-ai-hint="modern library"
-          />
-        </div>
-      </div>
-    </div>
+            className="object-cover"
+            data-ai-hint="modern library"
+        />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-transparent to-transparent"/>
+        <motion.div variants={variants} className="absolute bottom-4 left-4 z-20">
+            <h3 className="text-lg font-bold text-white">Modern Library</h3>
+        </motion.div>
+    </motion.div>
   );
 };
 
