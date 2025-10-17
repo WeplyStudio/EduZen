@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -6,9 +5,32 @@ import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, ReactNode, useEffect } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import ProgramsDemo from '@/components/programs-demo';
+
+function AOSWrapper({ children, once = true }: { children: ReactNode, once?: boolean }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once });
+
+  const variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={variants}
+      initial="hidden"
+      animate={isInView ? 'visible' : 'hidden'}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 
 function FeatureCard({ icon, title, subtitle }: { icon: React.ReactNode; title:string; subtitle: string;}) {
     return (
@@ -59,50 +81,115 @@ export default function LandingPage() {
       { href: "#about", label: "About Us" },
       { href: "#programs", label: "Programs" },
       { href: "#features", label: "Why Us" },
-  ]
+  ];
 
   const menuVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.2 } },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.2 } },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.3 } },
+    exit: { opacity: 0, transition: { duration: 0.3, delay: 0.4 } },
   };
+
+  const navContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+     exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+  };
+
+   const navItemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 0.4 } },
+    exit: { y: 10, opacity: 0, transition: { ease: "easeIn", duration: 0.2 } },
+  };
+  
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[85%] z-50">
         <div className="mx-auto flex h-16 w-full items-center justify-between rounded-full bg-card/80 px-6 backdrop-blur-sm shadow-md border border-border/50">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <GraduationCap className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
-          </div>
+          </Link>
           
+          <div className="hidden md:flex items-center gap-2">
+            {navItems.map(item => (
+                <Button key={item.href} variant="ghost" asChild>
+                    <Link href={item.href} >
+                        {item.label}
+                    </Link>
+                </Button>
+            ))}
+          </div>
+
           <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full">
-              {menuOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
               <span className="sr-only">Toggle Menu</span>
+              <AnimatePresence mode="wait">
+                {menuOpen ? (
+                   <motion.div key="x" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                      <X className="h-5 w-5"/>
+                   </motion.div>
+                ) : (
+                  <motion.div key="menu" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <Menu className="h-5 w-5"/>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Button>
           </div>
         </div>
-         <AnimatePresence>
+      </header>
+       <AnimatePresence>
           {menuOpen && (
               <motion.div 
                 variants={menuVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="absolute top-20 left-0 w-full bg-card/90 backdrop-blur-sm rounded-2xl shadow-lg border border-border/50 overflow-hidden"
+                className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm"
               >
-                  <div className="flex flex-col items-center p-4 gap-2">
+                  <motion.div 
+                    variants={navContainerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="flex flex-col items-center justify-center h-full gap-6"
+                  >
                       {navItems.map(item => (
-                          <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="text-base font-medium hover:bg-primary/10 rounded-full w-full text-center py-2 transition-colors">
-                              {item.label}
-                          </Link>
+                          <motion.div key={item.href} variants={navItemVariants}>
+                            <Link href={item.href} onClick={() => setMenuOpen(false)} className="text-3xl font-semibold text-foreground hover:text-primary transition-colors">
+                                {item.label}
+                            </Link>
+                          </motion.div>
                       ))}
-                  </div>
+                  </motion.div>
               </motion.div>
           )}
         </AnimatePresence>
-      </header>
+
 
       <main className="flex-grow">
         <section className="relative pt-32 pb-24 px-4">
@@ -110,6 +197,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>
             </div>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+              <AOSWrapper>
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
                         <h2 className="text-5xl sm:text-6xl font-extrabold font-headline tracking-tight">
@@ -154,79 +242,99 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
+              </AOSWrapper>
             </div>
         </section>
         
-        <section id="about" className="py-16 sm:py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
-                <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-                    <Image src={aboutImage} alt="Kinarya Grasia School" fill className="object-cover" data-ai-hint="modern school building"/>
-                </div>
-                <div>
-                  <p className="font-semibold text-primary">About Our School</p>
-                  <h3 className="text-4xl font-bold font-headline text-foreground mt-2">Excellence in Education Since 2009</h3>
-                  <p className="mt-4 text-muted-foreground">
-                    Kinarya Grasia is dedicated to fostering a supportive and challenging learning environment. We empower students to become critical thinkers, lifelong learners, and compassionate leaders. Our internationally recognized Cambridge curriculum prepares students for global success.
-                  </p>
-                  <div className="mt-6 flex gap-8">
-                      <div>
-                          <p className="text-3xl font-bold text-primary">15+</p>
-                          <p className="text-muted-foreground">Years of Excellence</p>
-                      </div>
-                       <div>
-                          <p className="text-3xl font-bold text-primary">4 Levels</p>
-                          <p className="text-muted-foreground">Playground to SMP</p>
-                      </div>
+        <section id="about" className="py-16 sm:py-24 overflow-x-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <AOSWrapper>
+                <div className="grid md:grid-cols-2 gap-16 items-center">
+                  <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
+                      <Image src={aboutImage} alt="Kinarya Grasia School" fill className="object-cover" data-ai-hint="modern school building"/>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-primary">About Our School</p>
+                    <h3 className="text-4xl font-bold font-headline text-foreground mt-2">Excellence in Education Since 2009</h3>
+                    <p className="mt-4 text-muted-foreground">
+                      Kinarya Grasia is dedicated to fostering a supportive and challenging learning environment. We empower students to become critical thinkers, lifelong learners, and compassionate leaders. Our internationally recognized Cambridge curriculum prepares students for global success.
+                    </p>
+                    <div className="mt-6 flex gap-8">
+                        <div>
+                            <p className="text-3xl font-bold text-primary">15+</p>
+                            <p className="text-muted-foreground">Years of Excellence</p>
+                        </div>
+                         <div>
+                            <p className="text-3xl font-bold text-primary">4 Levels</p>
+                            <p className="text-muted-foreground">Playground to SMP</p>
+                        </div>
+                    </div>
                   </div>
                 </div>
+              </AOSWrapper>
             </div>
         </section>
 
         <section id="programs" className="py-16 sm:py-24 bg-secondary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            <h3 className="text-4xl font-bold font-headline text-foreground">Our Programs</h3>
-            <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We offer a comprehensive educational journey for every stage of your child's development.</p>
+            <AOSWrapper>
+              <h3 className="text-4xl font-bold font-headline text-foreground">Our Programs</h3>
+              <p className="mt-2 text-muted-foreground max-w-2xl mx-auto text-center">We offer a comprehensive educational journey for every stage of your child's development.</p>
+            </AOSWrapper>
             <div className="mt-12 w-full">
                 <ProgramsDemo />
             </div>
           </div>
         </section>
         
-        <FeaturesSectionDemo />
+        <AOSWrapper>
+            <FeaturesSectionDemo />
+        </AOSWrapper>
 
         <section id="features" className="py-16 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <AOSWrapper>
                 <div className="text-center">
                   <h3 className="text-4xl font-bold font-headline text-foreground">Why Choose Kinarya Grasia?</h3>
                   <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We provide a holistic educational experience that sets our students apart.</p>
                 </div>
-                 <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              </AOSWrapper>
+               <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <AOSWrapper>
                     <FeatureCard icon={<GraduationCap className="h-8 w-8" />} title="Cambridge Curriculum" subtitle="An internationally recognized program that opens doors to the world's best universities."/>
+                  </AOSWrapper>
+                  <AOSWrapper>
                     <FeatureCard icon={<Star className="h-8 w-8" />} title="Experienced Educators" subtitle="Our passionate and certified teachers are dedicated to each student's success."/>
+                  </AOSWrapper>
+                  <AOSWrapper>
                     <FeatureCard icon={<Building className="h-8 w-8" />} title="Modern Facilities" subtitle="State-of-the-art classrooms, labs, and sports facilities that enhance learning."/>
+                  </AOSWrapper>
                 </div>
             </div>
         </section>
 
         <section className="py-16 sm:py-24 bg-secondary">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+             <AOSWrapper>
               <div className="text-center">
                   <h3 className="text-4xl font-bold font-headline text-foreground">What Our Community Says</h3>
                   <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">Hear from parents and students who are part of the Kinarya Grasia family.</p>
               </div>
+              </AOSWrapper>
               <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <TestimonialCard name="Sarah L." role="Parent of 3rd Grader" avatar={user1Avatar}>
+                  <AOSWrapper><TestimonialCard name="Sarah L." role="Parent of 3rd Grader" avatar={user1Avatar}>
                     "Kinarya Grasia has been a transformative experience for our daughter. The Cambridge curriculum is challenging yet engaging, and the teachers are incredibly supportive. We've seen her confidence and love for learning grow exponentially."
-                  </TestimonialCard>
-                  <TestimonialCard name="Michael B." role="Parent of 8th Grader" avatar={user2Avatar}>
+                  </TestimonialCard></AOSWrapper>
+                  <AOSWrapper><TestimonialCard name="Michael B." role="Parent of 8th Grader" avatar={user2Avatar}>
                     "The school's focus on critical thinking and leadership skills is outstanding. Our son is not just memorizing facts; he's learning how to think, problem-solve, and collaborate. We couldn't be happier with our choice."
-                  </TestimonialCard>
+                  </TestimonialCard></AOSWrapper>
               </div>
           </div>
         </section>
 
         <section className="py-16 sm:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AOSWrapper>
             <div className="bg-card rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2 items-center">
               <div className="p-8 md:p-12">
                 <h3 className="text-3xl font-bold font-headline text-foreground">Ready to Join Us?</h3>
@@ -242,6 +350,7 @@ export default function LandingPage() {
                 <Image src={ctaImage} alt="Happy student" fill className="object-cover" data-ai-hint="happy student" />
               </div>
             </div>
+            </AOSWrapper>
           </div>
         </section>
 
@@ -302,3 +411,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    
