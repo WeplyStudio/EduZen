@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Check, CheckCircle, Heart, Star, Users, CheckSquare, Sun } from 'lucide-react';
+import { ArrowRight, BookOpen, Check, CheckCircle, Heart, Star, Sun, Users, CheckSquare } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -80,20 +80,29 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-16 sm:py-24">
+        <section className="py-12 bg-card text-card-foreground">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div>
-                        <p className="text-4xl font-bold text-primary">50+</p>
-                        <p className="mt-2 text-muted-foreground">Total Courses</p>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="bg-red-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-red-400" /></div>
+                        <div>
+                            <p className="text-4xl font-bold">50+</p>
+                            <p className="mt-1 text-muted-foreground">Total Courses</p>
+                        </div>
                     </div>
-                    <div>
-                        <p className="text-4xl font-bold text-accent">12K+</p>
-                        <p className="mt-2 text-muted-foreground">Total Students</p>
+                    <div className="flex items-center justify-center gap-4">
+                        <div className="bg-yellow-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-yellow-400" /></div>
+                        <div>
+                            <p className="text-4xl font-bold">12K+</p>
+                            <p className="mt-1 text-muted-foreground">Total Students</p>
+                        </div>
                     </div>
-                     <div>
-                        <p className="text-4xl font-bold text-green-500">70+</p>
-                        <p className="mt-2 text-muted-foreground">Total Videos</p>
+                     <div className="flex items-center justify-center gap-4">
+                        <div className="bg-green-500/20 p-3 rounded-lg"><CheckSquare className="h-6 w-6 text-green-400" /></div>
+                        <div>
+                            <p className="text-4xl font-bold">70+</p>
+                            <p className="mt-1 text-muted-foreground">Total Videos</p>
+                        </div>
                     </div>
                 </div>
             </div>
