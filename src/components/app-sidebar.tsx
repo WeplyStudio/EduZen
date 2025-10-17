@@ -8,31 +8,23 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarContent,
-  SidebarFooter,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { Button } from './ui/button';
-import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, PanelLeft, Users } from 'lucide-react';
+import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, Users, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/dashboard', icon: Home, label: 'Dashboard' },
   { href: '/tasks', icon: ListTodo, label: 'Tasks' },
   { href: '/workspace', icon: Users, label: 'Workspace' },
   { href: '/research', icon: FlaskConical, label: 'Research' },
+  { href: '/courses', icon: BookOpen, label: 'Courses' },
 ];
 
 export function AppSidebar() {
   const pathname = usePathname();
-  const { state, toggleSidebar } = useSidebar();
+  const { state } = useSidebar();
   const userAvatar = PlaceHolderImages.find((img) => img.id === 'user-3')?.imageUrl || '';
 
   // For app-like navigation, it's better to match the base path.
@@ -52,7 +44,7 @@ export function AppSidebar() {
           <SidebarHeader className="h-16 flex items-center justify-center">
             <Link href="/dashboard" className="flex items-center gap-2">
               <BookOpen className="w-7 h-7 text-sidebar-primary" />
-              <span className={cn("font-bold text-xl font-headline", state === 'collapsed' && "hidden")}>EduZen</span>
+              <span className={cn("font-bold text-xl font-headline", state === 'collapsed' && "hidden")}>Edukids</span>
             </Link>
           </SidebarHeader>
 

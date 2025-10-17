@@ -23,6 +23,54 @@
       "description": "User avatar 4",
       "imageUrl": "https://picsum.photos/seed/4/40/40",
       "imageHint": "person portrait"
+    },
+    {
+      "id": "hero-1",
+      "description": "Hero image 1",
+      "imageUrl": "https://picsum.photos/seed/hero1/250/300",
+      "imageHint": "happy student"
+    },
+    {
+      "id": "hero-2",
+      "description": "Hero image 2",
+      "imageUrl": "https://picsum.photos/seed/hero2/250/300",
+      "imageHint": "happy student"
+    },
+    {
+      "id": "course-1",
+      "description": "Course image 1",
+      "imageUrl": "https://picsum.photos/seed/course1/300/200",
+      "imageHint": "kids learning"
+    },
+    {
+      "id": "course-2",
+      "description": "Course image 2",
+      "imageUrl": "https://picsum.photos/seed/course2/300/200",
+      "imageHint": "child thinking"
+    },
+    {
+      "id": "course-3",
+      "description": "Course image 3",
+      "imageUrl": "https://picsum.photos/seed/course3/300/200",
+      "imageHint": "child flying"
+    },
+    {
+      "id": "course-4",
+      "description": "Course image 4",
+      "imageUrl": "https://picsum.photos/seed/course4/300/200",
+      "imageHint": "math equations"
+    },
+    {
+      "id": "course-5",
+      "description": "Course image 5",
+      "imageUrl": "https://picsum.photos/seed/course5/300/200",
+      "imageHint": "physics experiment"
+    },
+    {
+      "id": "course-6",
+      "description": "Course image 6",
+      "imageUrl": "https://picsum.photos/seed/course6/300/200",
+      "imageHint": "writing hand"
     }
   ]
 }
