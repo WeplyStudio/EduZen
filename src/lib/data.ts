@@ -1,9 +1,4 @@
 import { PlaceHolderImages } from './placeholder-images';
-import {
-  IconAcademicCap,
-  IconUsers,
-  IconVideo,
-} from '@/lib/icons';
 
 export type Task = {
   id: string;
@@ -125,19 +120,19 @@ export const stats = [
   {
     value: '50+',
     label: 'Total Courses',
-    icon: IconAcademicCap,
+    icon: 'academic-cap',
     color: '#FF6B6B',
   },
   {
     value: '12k+',
     label: 'Total Students',
-    icon: IconUsers,
+    icon: 'users',
     color: '#4ECDC4',
   },
   {
     value: '70+',
     label: 'Total Videos',
-    icon: IconVideo,
+    icon: 'video',
     color: '#45B7D1',
   },
 ];
