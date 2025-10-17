@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Users, Menu, X } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Users, Menu, X, Baby, ToyBrick, School } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
@@ -241,7 +241,7 @@ export default function LandingPage() {
                 <p className="mt-4 text-muted-foreground">
                   Take the first step towards providing your child with an exceptional education. Explore our admissions process or get in touch with our team to learn more.
                 </p>
-                <div className="mt-6 flex gap-4">
+                <div className="mt-6 flex flex-wrap gap-4">
                   <Button size="lg">Admissions</Button>
                   <Button size="lg" variant="outline">Contact Us</Button>
                 </div>
@@ -269,7 +269,7 @@ export default function LandingPage() {
                     <h4 className="font-bold font-headline mb-4 text-white">Programs</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary transition-colors">Playground</Link></li>
-                        <li><Link href="#" className="hover:text-primary transition-colors">Kindergarten</Link>_</li>
+                        <li><Link href="#" className="hover:text-primary transition-colors">Kindergarten</Link></li>
                         <li><Link href="#" className="hover:text-primary transition-colors">Elementary</Link></li>
                         <li><Link href="#" className="hover:text-primary transition-colors">Junior High</Link></li>
                     </ul>
