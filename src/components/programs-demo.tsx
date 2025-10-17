@@ -2,11 +2,11 @@ import { CardSpotlight } from "@/components/ui/card-spotlight";
 
 export default function ProgramsDemo() {
   return (
-    <CardSpotlight className="h-96 w-96 md:w-[50rem] group">
-      <p className="text-xl font-bold relative z-20 mt-2 text-white">
+    <CardSpotlight className="h-96 w-96 md:w-[50rem] group bg-primary/10">
+      <p className="text-xl font-bold relative z-20 mt-2 text-foreground">
         Our Programs
       </p>
-      <div className="text-neutral-200 mt-4 relative z-20">
+      <div className="text-muted-foreground mt-4 relative z-20">
         A comprehensive educational journey for every stage of your child's
         development.
         <ul className="list-none mt-4 space-y-2">
@@ -24,7 +24,7 @@ const Step = ({ title }: { title: string }) => {
   return (
     <li className="flex gap-2 items-start">
       <CheckIcon />
-      <p className="text-white">{title}</p>
+      <p className="text-muted-foreground">{title}</p>
     </li>
   );
 };
@@ -37,7 +37,7 @@ const CheckIcon = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-4 w-4 text-blue-500 mt-1 shrink-0"
+      className="h-4 w-4 text-primary mt-1 shrink-0"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path
