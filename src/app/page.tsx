@@ -2,9 +2,10 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, CheckCircle, GraduationCap, Building, Star, Heart, MessageCircle } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckSquare, GraduationCap, Building, Star, Heart, MessageCircle, Sun, Users } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
 
 function FeatureCard({ icon, title, subtitle }: { icon: React.ReactNode; title:string; subtitle: string;}) {
     return (
@@ -128,6 +129,8 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+        
+        <FeaturesSectionDemo />
 
         <section id="features" className="py-16 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
