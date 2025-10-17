@@ -10,17 +10,18 @@ type StatCardProps = {
 
 export function StatCard({ value, label, icon: Icon, color }: StatCardProps) {
   return (
-    <Card className="bg-white p-6 flex items-center gap-4">
-      <div
-        className="p-4 rounded-full"
-        style={{ backgroundColor: `${color}33` }}
-      >
-        <Icon className="h-6 w-6" style={{ color }} />
-      </div>
-      <div>
-        <div className="text-2xl font-bold">{value}</div>
-        <div className="text-muted-foreground">{label}</div>
-      </div>
+    <Card className="p-4" style={{ backgroundColor: color }}>
+      <CardContent className="flex items-center gap-4 p-0">
+        <div
+          className="p-3 rounded-lg bg-white/20"
+        >
+          <Icon className="h-6 w-6 text-white" />
+        </div>
+        <div>
+          <div className="text-2xl font-bold text-white">{value}</div>
+          <div className="text-white/80">{label}</div>
+        </div>
+      </CardContent>
     </Card>
   );
 }

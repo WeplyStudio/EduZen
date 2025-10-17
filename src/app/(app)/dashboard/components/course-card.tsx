@@ -19,17 +19,17 @@ export function CourseCard({ title, imageUrl, imageHint, color }: CourseCardProp
       className="rounded-2xl p-6 flex flex-col justify-between min-h-[250px]"
       style={{ backgroundColor: color ? color : 'transparent' }}
     >
-      {imageUrl && (
-        <div className="relative h-24 mb-4">
-          <Image
-            src={imageUrl}
-            alt={title}
-            fill
-            className="object-cover rounded-lg"
-            data-ai-hint={imageHint}
-          />
-        </div>
-      )}
+        {imageUrl && (
+            <div className="relative h-32 mb-4 rounded-lg overflow-hidden">
+            <Image
+                src={imageUrl}
+                alt={title}
+                fill
+                className="object-cover"
+                data-ai-hint={imageHint}
+            />
+            </div>
+        )}
       <h4 className="text-xl font-bold font-headline text-white">{title}</h4>
       <Button
         variant="ghost"

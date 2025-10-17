@@ -1,5 +1,4 @@
 import { PlaceHolderImages } from './placeholder-images';
-import { Users, Video, FileText } from 'lucide-react';
 import {
   IconAcademicCap,
   IconUsers,
@@ -149,21 +148,21 @@ export const courses = [
     title: 'Life Skills For Kids',
     imageUrl: PlaceHolderImages.find(img => img.id === 'course-1')?.imageUrl,
     imageHint: 'kids learning',
-    color: '#FFD166',
+    color: '#FF9A76',
   },
   {
     id: '2',
     title: 'Imagination is power',
     imageUrl: PlaceHolderImages.find(img => img.id === 'course-2')?.imageUrl,
     imageHint: 'child thinking',
-    color: '#06D6A0',
+    color: '#6AAB9C',
   },
   {
     id: '3',
     title: 'Grow your own wings',
     imageUrl: PlaceHolderImages.find(img => img.id === 'course-3')?.imageUrl,
     imageHint: 'child flying',
-    color: '#118AB2',
+    color: '#55828B',
   },
   {
     id: '4',

@@ -4,9 +4,9 @@ import { stats, courses } from '@/lib/data';
 import { ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CourseStack } from './components/course-stack';
 import { StatCard } from './components/stat-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { CourseCard } from './components/course-card';
 
 export default function DashboardPage() {
   const heroImage1 =
@@ -17,7 +17,7 @@ export default function DashboardPage() {
     <div className="flex-1 flex flex-col bg-background">
       <AppHeader title="Dashboard" />
       <main className="flex-1 p-4 md:p-6 lg:p-8">
-        <section className="bg-white rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+        <section className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
             <h2 className="text-4xl font-bold font-headline text-foreground tracking-tight">
               Putting your child's Future in great motion
@@ -35,8 +35,6 @@ export default function DashboardPage() {
                 <span>Math & English</span>
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
                 <span>All level</span>
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <span>No Fee Required</span>
               </div>
             </div>
           </div>
@@ -44,17 +42,17 @@ export default function DashboardPage() {
             <Image
               src={heroImage1}
               alt="Happy student"
-              width={250}
-              height={300}
-              className="rounded-full object-cover z-10"
+              width={200}
+              height={250}
+              className="rounded-xl object-cover z-10"
               data-ai-hint="happy student"
             />
             <Image
               src={heroImage2}
               alt="Happy student"
-              width={250}
-              height={300}
-              className="rounded-full object-cover absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4"
+              width={200}
+              height={250}
+              className="rounded-xl object-cover absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4"
               data-ai-hint="happy student"
             />
           </div>
@@ -77,10 +75,14 @@ export default function DashboardPage() {
               </Link>
             </Button>
           </div>
-          <CourseStack items={courses.slice(0, 5)} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {courses.slice(0, 3).map((course) => (
+                <CourseCard key={course.id} {...course} />
+            ))}
+          </div>
         </section>
 
-        <section className="mt-12 bg-white rounded-2xl p-8">
+        <section className="mt-12 bg-card rounded-2xl p-8">
             <h3 className="text-2xl font-bold font-headline text-center">Shaping the future of kids</h3>
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div className="flex flex-col items-center">

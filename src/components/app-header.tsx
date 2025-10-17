@@ -23,7 +23,7 @@ export function AppHeader({ title }: AppHeaderProps) {
   const userAvatar = PlaceHolderImages.find((img) => img.id === 'user-3')?.imageUrl || '';
 
   return (
-    <header className="flex h-16 items-center justify-between border-b bg-card px-4 md:px-6">
+    <header className="flex h-16 items-center justify-between border-b bg-background px-4 md:px-6">
       <div className="flex items-center gap-4">
         {isMobile && <SidebarTrigger />}
         <h1 className="text-xl font-semibold tracking-tight font-headline">{title}</h1>
