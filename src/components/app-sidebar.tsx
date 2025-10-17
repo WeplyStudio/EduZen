@@ -10,7 +10,7 @@ import {
   SidebarContent,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, Users } from 'lucide-react';
+import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, Users, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -43,8 +43,8 @@ export function AppSidebar() {
         <div>
           <SidebarHeader className="h-20 flex items-center justify-center">
             <Link href="/" className="flex items-center gap-2">
-              <BookOpen className="w-8 h-8 text-sidebar-primary" />
-              <span className={cn("font-bold text-2xl font-headline", state === 'collapsed' && "hidden")}>Edukids</span>
+              <GraduationCap className="w-8 h-8 text-sidebar-primary" />
+              <span className={cn("font-bold text-2xl font-headline", state === 'collapsed' && "hidden")}>Kinarya Grasia</span>
             </Link>
           </SidebarHeader>
 

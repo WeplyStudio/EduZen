@@ -16,8 +16,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'EduZen',
-  description: 'The minimalist learning hub for modern students.',
+  title: 'Kinarya Grasia',
+  description: 'Nurturing Future Leaders with the Cambridge Curriculum.',
 };
 
 export default function RootLayout({

@@ -2,31 +2,18 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, BookOpen, Check, CheckCircle, Heart, Star, Sun, Users, CheckSquare } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckCircle, GraduationCap, Building, Star } from 'lucide-react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-function CourseCard({ imageSrc, title, color }: { imageSrc?: string; title: string; color: string }) {
-  return (
-    <div className={`${color} rounded-2xl p-6`}>
-        {imageSrc && (
-            <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                <Image src={imageSrc} alt={title} fill className="object-cover" />
-            </div>
-        )}
-        <h4 className="text-xl font-bold font-headline text-white">{title}</h4>
-    </div>
-  )
-}
-
-function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React.ReactNode; title:string; subtitle: string; color: string; iconColor: string; }) {
+function FeatureCard({ icon, title, subtitle }: { icon: React.ReactNode; title:string; subtitle: string;}) {
     return (
-        <div className="flex flex-col items-center">
-            <div className={`p-4 rounded-full ${color}`}>
-                <div className={`h-8 w-8 ${iconColor}`}>{icon}</div>
+        <div className="flex flex-col items-center text-center p-6 border rounded-lg bg-card shadow-sm">
+            <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">
+                {icon}
             </div>
-            <p className="mt-4 font-semibold text-foreground">{title}</p>
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
+            <h4 className="font-semibold text-lg text-foreground">{title}</h4>
+            <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
         </div>
     )
 }
@@ -34,252 +21,147 @@ function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React
 export default function LandingPage() {
   const heroImage1 =
     PlaceHolderImages.find((img) => img.id === 'hero-1')?.imageUrl || '';
-  const heroImage2 =
-    PlaceHolderImages.find((img) => img.id === 'hero-2')?.imageUrl || '';
-  const empowerImage =
-    PlaceHolderImages.find((img) => img.id === 'empower-1')?.imageUrl || '';
-  const confidenceImage =
-    PlaceHolderImages.find((img) => img.id === 'confidence-1')?.imageUrl || '';
-   const buildingImage =
-    PlaceHolderImages.find((img) => img.id === 'building-1')?.imageUrl || '';
-
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="fixed top-4 left-1/2 -translate-x-1/2 w-full z-50">
-        <div className="mx-auto flex h-16 w-3/4 items-center justify-between rounded-full bg-white/70 px-6 backdrop-blur-sm shadow-md border border-white/50">
+        <div className="mx-auto flex h-16 w-3/4 items-center justify-between rounded-full bg-card/80 px-6 backdrop-blur-sm shadow-md border border-border/50">
           <div className="flex items-center gap-2">
-            <BookOpen className="h-7 w-7 text-primary" />
-            <h1 className="text-xl font-bold font-headline">Edukids</h1>
+            <GraduationCap className="h-7 w-7 text-primary" />
+            <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
           </div>
           <nav className="hidden md:flex items-center gap-1">
-              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">About</Link>
-              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Program</Link>
-              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Features</Link>
-              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Pricing</Link>
-              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Instructor</Link>
+              <Link href="#about" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">About Us</Link>
+              <Link href="#programs" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Programs</Link>
+              <Link href="#features" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Why Us</Link>
           </nav>
           <Button asChild className="rounded-full">
             <Link href="/dashboard">
-              Get Started
+              Student Portal
             </Link>
           </Button>
         </div>
       </header>
 
       <main className="flex-grow">
-        <section className="relative text-center pt-32 pb-32 px-4">
+        <section className="relative text-center pt-40 pb-32 px-4">
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-headline tracking-tight">
-              Putting your child's Future in great motion
+              Nurturing Future Leaders with the Cambridge Curriculum
             </h2>
-            <div className="mt-6 flex items-center justify-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span>Math & English</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span>All level</span>
-                </div>
-                 <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span>For free all lectures</span>
-                </div>
-            </div>
+            <p className="mt-8 text-muted-foreground max-w-2xl mx-auto text-lg">
+              Since 2009, Kinarya Grasia has been providing exceptional education for students from Playground and Kindergarten to Elementary and Junior High School.
+            </p>
             <div className="mt-8">
               <Button size="lg" className="rounded-full h-12 text-base px-8" asChild>
                 <Link href="/dashboard">
-                    Start learning <ArrowRight className="ml-2" />
+                    Enroll Now <ArrowRight className="ml-2" />
                 </Link>
               </Button>
             </div>
-             <p className="mt-8 text-muted-foreground max-w-md mx-auto">
-              We don't just give our students only lecture but real life experience.
-            </p>
           </div>
-          <div className="absolute top-1/2 left-24 hidden lg:block">
-            <Image src={heroImage1} alt="Happy student" width={200} height={250} className="rounded-2xl" data-ai-hint="happy student"/>
-          </div>
-           <div className="absolute top-1/2 right-24 hidden lg:block">
-            <Image src={heroImage2} alt="Happy student" width={200} height={250} className="rounded-2xl" data-ai-hint="happy student"/>
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
           </div>
         </section>
-
-        <section className="py-12 bg-[#2D2D2D] text-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div className="flex items-center justify-center gap-4">
-                        <div className="bg-red-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-red-400" /></div>
-                        <div>
-                            <p className="text-4xl font-bold">50+</p>
-                            <p className="mt-1 text-white/70">Total Courses</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-center gap-4">
-                        <div className="bg-yellow-500/20 p-3 rounded-lg"><Users className="h-6 w-6 text-yellow-400" /></div>
-                        <div>
-                            <p className="text-4xl font-bold">12K+</p>
-                            <p className="mt-1 text-white/70">Total Students</p>
-                        </div>
-                    </div>
-                     <div className="flex items-center justify-center gap-4">
-                        <div className="bg-green-500/20 p-3 rounded-lg"><CheckSquare className="h-6 w-6 text-green-400" /></div>
-                        <div>
-                            <p className="text-4xl font-bold">70+</p>
-                            <p className="mt-1 text-white/70">Total Videos</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section className="py-16 sm:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-4xl font-bold font-headline text-foreground max-w-sm">Smart and clever kids ready to fly high!</h3>
-                <Button variant="outline" asChild className="rounded-full">
-                    <Link href="/courses">Learn More <ArrowRight className="ml-2" /></Link>
-                </Button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <CourseCard imageSrc={PlaceHolderImages.find(p => p.id === 'course-1')?.imageUrl} title="Life Skills For Kids" color="bg-[#FF9A76]" />
-              <CourseCard imageSrc={PlaceHolderImages.find(p => p.id === 'course-2')?.imageUrl} title="Imagination is power" color="bg-[#6AAB9C]" />
-              <CourseCard imageSrc={PlaceHolderImages.find(p => p.id === 'course-3')?.imageUrl} title="Grow your own wings" color="bg-[#55828B]" />
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 sm:py-24 text-center">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <p className="text-muted-foreground font-medium">We have an important lesson at this time</p>
-                <h3 className="text-4xl font-bold font-headline text-foreground mt-2">Shaping the future of kids</h3>
-                <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <CategoryCard icon={<Sun />} title="Letter Identification" subtitle="Class - Pre School" color="bg-blue-100" iconColor="text-blue-500" />
-                    <CategoryCard icon={<BookOpen />} title="General Knowledge" subtitle="Fourth Grade" color="bg-red-100" iconColor="text-red-500"/>
-                    <CategoryCard icon={<Star />} title="Geography Quiz" subtitle="First Grade" color="bg-green-100" iconColor="text-green-500"/>
-                    <CategoryCard icon={<Heart />} title="Visual Arts Training" subtitle="Coaching class" color="bg-yellow-100" iconColor="text-yellow-500"/>
-                </div>
-            </div>
-        </section>
-
-        <section className="py-16 sm:py-24">
+        
+        <section id="about" className="py-16 sm:py-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
-                <div className="grid grid-cols-1 gap-8">
-                    <div className="bg-yellow-300 rounded-2xl p-8">
-                        <h4 className="text-3xl font-bold font-headline text-yellow-800">Confidence that builds a brighter future.</h4>
-                        <p className="mt-2 text-yellow-700">We care about your child's future, we are the best choice.</p>
-                        <Button variant="outline" className="mt-6 rounded-full bg-white text-yellow-800 border-yellow-800 hover:bg-white/80 hover:text-yellow-800">Learn More</Button>
-                    </div>
-                     <div className="bg-red-200 rounded-2xl p-8">
-                        <h4 className="text-3xl font-bold font-headline text-red-800">Helping kids to shoot their dreams.</h4>
-                        <p className="mt-2 text-red-700">We are a team of professionals who are passionate about education.</p>
-                        <Button variant="outline" className="mt-6 rounded-full bg-white text-red-800 border-red-800 hover:bg-white/80 hover:text-red-800">Learn More</Button>
-                    </div>
+                <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                    <Image src={heroImage1} alt="Kinarya Grasia School" fill className="object-cover" data-ai-hint="modern school building"/>
                 </div>
-                 <div className="relative h-[500px]">
-                    <Image src={confidenceImage} alt="Confident kid" fill className="object-cover rounded-2xl" data-ai-hint="confident child"/>
+                <div>
+                  <p className="font-semibold text-primary">About Our School</p>
+                  <h3 className="text-4xl font-bold font-headline text-foreground mt-2">Excellence in Education Since 2009</h3>
+                  <p className="mt-4 text-muted-foreground">
+                    Kinarya Grasia is dedicated to fostering a supportive and challenging learning environment. We empower students to become critical thinkers, lifelong learners, and compassionate leaders. Our internationally recognized Cambridge curriculum prepares students for global success.
+                  </p>
+                  <div className="mt-6 flex gap-8">
+                      <div>
+                          <p className="text-3xl font-bold text-primary">15+</p>
+                          <p className="text-muted-foreground">Years of Excellence</p>
+                      </div>
+                       <div>
+                          <p className="text-3xl font-bold text-primary">4 Levels</p>
+                          <p className="text-muted-foreground">Playground to SMP</p>
+                      </div>
+                  </div>
                 </div>
             </div>
         </section>
 
-         <section className="py-16 sm:py-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                <Image src={empowerImage} alt="Smart kid" fill className="object-cover" data-ai-hint="smart child"/>
-            </div>
-            <div>
-              <p className="font-semibold text-primary">Join our community</p>
-              <h3 className="text-4xl font-bold font-headline text-foreground mt-2">Empower your kids to think be smarter and sharper</h3>
-              <p className="mt-4 text-muted-foreground">
-                We design our curriculum to be engaging and effective. Our teachers are passionate about helping children learn and grow.
-              </p>
-              <div className="mt-6 flex gap-8">
-                  <div>
-                      <p className="text-3xl font-bold text-green-500">45M+</p>
-                      <p className="text-muted-foreground">Active students on our platform</p>
-                  </div>
-                   <div>
-                      <p className="text-3xl font-bold text-blue-500">164+</p>
-                      <p className="text-muted-foreground">Awesome review from parents</p>
-                  </div>
-              </div>
-              <Button className="mt-8 rounded-full h-12 text-base px-8" asChild>
-                <Link href="/dashboard">Get Started</Link>
-              </Button>
+        <section id="programs" className="py-16 sm:py-24 bg-secondary">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 className="text-4xl font-bold font-headline text-foreground">Our Programs</h3>
+            <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We offer a comprehensive educational journey for every stage of your child's development.</p>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Playground" subtitle="A fun and safe start to learning." />
+                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Kindergarten (TK)" subtitle="Building foundational skills with joy." />
+                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Elementary (SD)" subtitle="Developing core knowledge and creativity." />
+                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Junior High (SMP)" subtitle="Preparing for higher education and beyond." />
             </div>
           </div>
         </section>
 
-        <section className="py-16 sm:py-24">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-yellow-300 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
-                    <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
-                        <Image src={buildingImage} alt="Kids learning" fill className="object-cover" data-ai-hint="children learning"/>
-                    </div>
-                    <div>
-                        <p className="font-semibold text-yellow-800">Learning Path</p>
-                        <h3 className="text-4xl font-bold font-headline text-yellow-900 mt-2">Building children one at a time</h3>
-                        <p className="mt-4 text-yellow-800">We believe in a personalized approach to education, where every child's unique potential is nurtured.</p>
-                        <div className="mt-4 flex items-center gap-4 text-yellow-900">
-                           <div className="flex items-center gap-2">
-                                <Check className="h-5 w-5"/>
-                                <span>Get a certificate</span>
-                           </div>
-                             <div className="flex items-center gap-2">
-                                <Check className="h-5 w-5"/>
-                                <span>Offline & Online Class</span>
-                           </div>
-                        </div>
-                    </div>
+        <section id="features" className="py-16 sm:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 className="text-4xl font-bold font-headline text-foreground">Why Choose Kinarya Grasia?</h3>
+                <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We provide a holistic educational experience that sets our students apart.</p>
+                 <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <FeatureCard icon={<GraduationCap className="h-8 w-8" />} title="Cambridge Curriculum" subtitle="An internationally recognized program that opens doors to the world's best universities."/>
+                    <FeatureCard icon={<Star className="h-8 w-8" />} title="Experienced Educators" subtitle="Our passionate and certified teachers are dedicated to each student's success."/>
+                    <FeatureCard icon={<Building className="h-8 w-8" />} title="Modern Facilities" subtitle="State-of-the-art classrooms, labs, and sports facilities that enhance learning."/>
                 </div>
             </div>
         </section>
 
       </main>
 
-      <footer className="bg-card text-card-foreground pt-16 pb-8">
+      <footer className="bg-sidebar text-sidebar-foreground pt-16 pb-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
                 <div>
-                    <h4 className="font-bold font-headline mb-4 text-white">For Pre-School</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">Programs</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li><Link href="#" className="hover:text-primary">For Kindergarten</Link></li>
-                        <li><Link href="#" className="hover:text-primary">For School</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Playground</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Kindergarten</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Elementary</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Junior High</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4 text-white">About us</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">About Us</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li><Link href="#" className="hover:text-primary">Career</Link></li>
-                        <li><Link href="#" className="hover:text-primary">Press & Media</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Our History</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Careers</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4 text-white">Profile</h4>
+                    <h4 className="font-bold font-headline mb-4 text-white">Resources</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li><Link href="#" className="hover:text-primary">Update live</Link></li>
-                        <li><Link href="#" className="hover:text-primary">Subscription</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Admissions</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Student Portal</Link></li>
                     </ul>
                 </div>
                 <div>
                     <h4 className="font-bold font-headline mb-4 text-white">Contact</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li><Link href="#" className="hover:text-primary">FAQs</Link></li>
-                        <li><Link href="#" className="hover:text-primary">Help</Link></li>
+                        <li><Link href="#" className="hover:text-primary">Get in Touch</Link></li>
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-bold font-headline mb-4 text-white">In a rush?</h4>
-                     <p className="text-sm text-muted-foreground">We're on Instagram and Twitter</p>
+                    <h4 className="font-bold font-headline mb-4 text-white">Connect</h4>
+                     <p className="text-sm text-muted-foreground">Follow us on social media.</p>
                 </div>
             </div>
-          <div className="mt-12 border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="mt-12 border-t border-sidebar-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
              <div className="flex items-center gap-2">
-                <BookOpen className="h-7 w-7 text-primary" />
-                <h2 className="text-xl font-bold font-headline text-white">Edukids</h2>
+                <GraduationCap className="h-7 w-7 text-primary" />
+                <h2 className="text-xl font-bold font-headline text-white">Kinarya Grasia</h2>
             </div>
-            <p className="text-muted-foreground mt-4 md:mt-0">&copy; {new Date().getFullYear()} Edukids. All rights reserved.</p>
+            <p className="text-muted-foreground mt-4 md:mt-0">&copy; {new Date().getFullYear()} Kinarya Grasia. All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
                 <Link href="#" className="text-muted-foreground hover:text-primary">Privacy Policy</Link>
                 <Link href="#" className="text-muted-foreground hover:text-primary">Terms of Use</Link>
@@ -290,5 +172,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
