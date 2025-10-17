@@ -1,3 +1,5 @@
+
+'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, BookOpen, Check, CheckCircle, CheckSquare, Heart, Star, Sun, Users } from 'lucide-react';
@@ -20,27 +22,29 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-8 w-8 text-primary" />
-          <h1 className="text-2xl font-bold font-headline">Edukids</h1>
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 container z-50">
+        <div className="mx-auto flex h-16 max-w-4xl items-center justify-between rounded-full bg-white/70 px-6 backdrop-blur-sm shadow-md border border-white/50">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-7 w-7 text-primary" />
+            <h1 className="text-xl font-bold font-headline">Edukids</h1>
+          </div>
+          <nav className="hidden md:flex items-center gap-1">
+              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">About</Link>
+              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Program</Link>
+              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Features</Link>
+              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Pricing</Link>
+              <Link href="#" className="text-sm font-medium hover:bg-black/5 rounded-full px-4 py-2 transition-colors">Instructor</Link>
+          </nav>
+          <Button asChild className="rounded-full">
+            <Link href="/dashboard">
+              Get Started
+            </Link>
+          </Button>
         </div>
-        <nav className="hidden md:flex items-center gap-8">
-            <Link href="#" className="text-sm font-medium hover:text-primary">About</Link>
-            <Link href="#" className="text-sm font-medium hover:text-primary">Program</Link>
-            <Link href="#" className="text-sm font-medium hover:text-primary">Features</Link>
-            <Link href="#" className="text-sm font-medium hover:text-primary">Pricing</Link>
-            <Link href="#" className="text-sm font-medium hover:text-primary">Instructor</Link>
-        </nav>
-        <Button asChild className="rounded-full">
-          <Link href="/dashboard">
-            Get Started
-          </Link>
-        </Button>
       </header>
 
       <main className="flex-grow">
-        <section className="relative text-center pt-20 pb-32 px-4">
+        <section className="relative text-center pt-32 pb-32 px-4">
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-headline tracking-tight">
               Putting your child's Future in great motion
@@ -281,3 +285,5 @@ function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React
         </div>
     )
 }
+
+    
