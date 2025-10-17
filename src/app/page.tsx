@@ -8,6 +8,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import FeaturesSectionDemo from '@/components/ui/features-section-demo-3';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ProgramsDemo from '@/components/programs-demo';
 
 function FeatureCard({ icon, title, subtitle }: { icon: React.ReactNode; title:string; subtitle: string;}) {
     return (
@@ -74,11 +75,7 @@ export default function LandingPage() {
             <GraduationCap className="h-7 w-7 text-primary" />
             <h1 className="text-xl font-bold font-headline">Kinarya Grasia</h1>
           </div>
-          <div className="hidden md:flex items-center gap-1">
-              <Link href="#about" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">About Us</Link>
-              <Link href="#programs" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Programs</Link>
-              <Link href="#features" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Why Us</Link>
-          </div>
+          
           <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full">
               {menuOpen ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
@@ -186,14 +183,11 @@ export default function LandingPage() {
         </section>
 
         <section id="programs" className="py-16 sm:py-24 bg-secondary">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
             <h3 className="text-4xl font-bold font-headline text-foreground">Our Programs</h3>
             <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">We offer a comprehensive educational journey for every stage of your child's development.</p>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Playground" subtitle="A fun and safe start to learning." />
-                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Kindergarten (TK)" subtitle="Building foundational skills with joy." />
-                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Elementary (SD)" subtitle="Developing core knowledge and creativity." />
-                <FeatureCard icon={<Building className="h-8 w-8"/>} title="Junior High (SMP)" subtitle="Preparing for higher education and beyond." />
+            <div className="mt-12">
+                <ProgramsDemo />
             </div>
           </div>
         </section>
