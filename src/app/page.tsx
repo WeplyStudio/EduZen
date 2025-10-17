@@ -52,7 +52,7 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-5xl z-50">
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[85%] z-50">
         <div className="mx-auto flex h-16 w-full items-center justify-between rounded-full bg-card/80 px-6 backdrop-blur-sm shadow-md border border-border/50">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-7 w-7 text-primary" />
@@ -273,4 +273,5 @@ export default function LandingPage() {
   );
 }
 
+    
     
