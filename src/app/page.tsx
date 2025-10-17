@@ -78,11 +78,6 @@ export default function LandingPage() {
               <Link href="#about" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">About Us</Link>
               <Link href="#programs" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Programs</Link>
               <Link href="#features" className="text-sm font-medium hover:bg-primary/10 rounded-full px-4 py-2 transition-colors">Why Us</Link>
-              <Button asChild className="rounded-full ml-2">
-                  <Link href="/dashboard">
-                  Student Portal
-                  </Link>
-              </Button>
           </div>
           <div className="md:hidden">
             <Button variant="ghost" size="icon" onClick={() => setMenuOpen(!menuOpen)} className="rounded-full">
@@ -106,11 +101,6 @@ export default function LandingPage() {
                               {item.label}
                           </Link>
                       ))}
-                      <Button asChild className="rounded-full mt-2 w-full">
-                          <Link href="/dashboard">
-                          Student Portal
-                          </Link>
-                      </Button>
                   </div>
               </motion.div>
           )}
