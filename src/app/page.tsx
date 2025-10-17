@@ -80,27 +80,20 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="py-12 bg-card">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-                <div className="flex items-center gap-4">
-                    <div className="bg-red-500 p-3 rounded-lg"><BookOpen className="h-6 w-6"/></div>
+        <section className="py-16 sm:py-24">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div>
-                        <p className="text-2xl font-bold">50+</p>
-                        <p className="text-sm opacity-80">Total Courses</p>
+                        <p className="text-4xl font-bold text-primary">50+</p>
+                        <p className="mt-2 text-muted-foreground">Total Courses</p>
                     </div>
-                </div>
-                 <div className="flex items-center gap-4">
-                    <div className="bg-yellow-500 p-3 rounded-lg"><Users className="h-6 w-6"/></div>
                     <div>
-                        <p className="text-2xl font-bold">12K+</p>
-                        <p className="text-sm opacity-80">Total Students</p>
+                        <p className="text-4xl font-bold text-accent">12K+</p>
+                        <p className="mt-2 text-muted-foreground">Total Students</p>
                     </div>
-                </div>
-                 <div className="flex items-center gap-4">
-                    <div className="bg-green-500 p-3 rounded-lg"><CheckSquare className="h-6 w-6"/></div>
-                    <div>
-                        <p className="text-2xl font-bold">70+</p>
-                        <p className="text-sm opacity-80">Total Videos</p>
+                     <div>
+                        <p className="text-4xl font-bold text-green-500">70+</p>
+                        <p className="mt-2 text-muted-foreground">Total Videos</p>
                     </div>
                 </div>
             </div>
@@ -285,7 +278,5 @@ function CategoryCard({ icon, title, subtitle, color, iconColor }: { icon: React
         </div>
     )
 }
-
-    
 
     
