@@ -4,7 +4,7 @@ import { stats, courses } from '@/lib/data';
 import { ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CourseCard } from './components/course-card';
+import { CourseStack } from './components/course-stack';
 import { StatCard } from './components/stat-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
@@ -73,15 +73,11 @@ export default function DashboardPage() {
             </h3>
             <Button variant="ghost" asChild>
               <Link href="/courses">
-                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                View All <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {courses.slice(0, 4).map((course) => (
-              <CourseCard key={course.id} {...course} />
-            ))}
-          </div>
+          <CourseStack items={courses.slice(0, 5)} />
         </section>
 
         <section className="mt-12 bg-white rounded-2xl p-8">
