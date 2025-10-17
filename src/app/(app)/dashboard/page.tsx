@@ -1,12 +1,12 @@
 import { AppHeader } from '@/components/app-header';
 import { Button } from '@/components/ui/button';
 import { stats, courses } from '@/lib/data';
-import { ArrowRight, CheckCircle2, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { StatCard } from './components/stat-card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { CourseCard } from './components/course-card';
+import { CourseStack } from './components/course-stack';
 
 export default function DashboardPage() {
   const heroImage1 =
@@ -17,9 +17,9 @@ export default function DashboardPage() {
     <div className="flex-1 flex flex-col bg-background">
       <AppHeader title="Dashboard" />
       <main className="flex-1 p-4 md:p-6 lg:p-8">
-        <section className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+        <section className="bg-card text-card-foreground rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
           <div className="flex-1">
-            <h2 className="text-4xl font-bold font-headline text-foreground tracking-tight">
+            <h2 className="text-4xl font-bold font-headline tracking-tight">
               Putting your child's Future in great motion
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -75,46 +75,9 @@ export default function DashboardPage() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {courses.slice(0, 3).map((course) => (
-                <CourseCard key={course.id} {...course} />
-            ))}
-          </div>
+          <CourseStack items={courses.slice(0, 4)} />
         </section>
 
-        <section className="mt-12 bg-card rounded-2xl p-8">
-            <h3 className="text-2xl font-bold font-headline text-center">Shaping the future of kids</h3>
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div className="flex flex-col items-center">
-                    <div className="bg-blue-100 p-4 rounded-full">
-                        <Star className="text-blue-500" />
-                    </div>
-                    <p className="mt-2 font-semibold">Letter Identification</p>
-                    <p className="text-sm text-muted-foreground">Class - Pre School</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <div className="bg-red-100 p-4 rounded-full">
-                        <Star className="text-red-500" />
-                    </div>
-                    <p className="mt-2 font-semibold">General Knowledge</p>
-                    <p className="text-sm text-muted-foreground">Fourth Grade</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <div className="bg-green-100 p-4 rounded-full">
-                        <Star className="text-green-500" />
-                    </div>
-                    <p className="mt-2 font-semibold">Geography Quiz</p>
-                    <p className="text-sm text-muted-foreground">First Grade</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <div className="bg-yellow-100 p-4 rounded-full">
-                        <Star className="text-yellow-500" />
-                    </div>
-                    <p className="mt-2 font-semibold">Visual Arts Training</p>
-                    <p className="text-sm text-muted-foreground">Coaching class</p>
-                </div>
-            </div>
-        </section>
       </main>
     </div>
   );

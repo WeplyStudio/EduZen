@@ -10,12 +10,12 @@ import {
   SidebarContent,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, Users, Home } from 'lucide-react';
+import { BookOpen, FlaskConical, LayoutDashboard, ListTodo, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const navItems = [
-  { href: '/dashboard', icon: Home, label: 'Dashboard' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/tasks', icon: ListTodo, label: 'Tasks' },
   { href: '/workspace', icon: Users, label: 'Workspace' },
   { href: '/research', icon: FlaskConical, label: 'Research' },
@@ -41,10 +41,10 @@ export function AppSidebar() {
     >
       <SidebarContent className="flex flex-col justify-between">
         <div>
-          <SidebarHeader className="h-16 flex items-center justify-center">
-            <Link href="/dashboard" className="flex items-center gap-2">
-              <BookOpen className="w-7 h-7 text-sidebar-primary" />
-              <span className={cn("font-bold text-xl font-headline", state === 'collapsed' && "hidden")}>Edukids</span>
+          <SidebarHeader className="h-20 flex items-center justify-center">
+            <Link href="/" className="flex items-center gap-2">
+              <BookOpen className="w-8 h-8 text-sidebar-primary" />
+              <span className={cn("font-bold text-2xl font-headline", state === 'collapsed' && "hidden")}>Edukids</span>
             </Link>
           </SidebarHeader>
 

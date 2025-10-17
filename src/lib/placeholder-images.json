@@ -27,13 +27,13 @@
     {
       "id": "hero-1",
       "description": "Hero image 1",
-      "imageUrl": "https://picsum.photos/seed/hero1/250/300",
+      "imageUrl": "https://picsum.photos/seed/hero1/200/250",
       "imageHint": "happy student"
     },
     {
       "id": "hero-2",
       "description": "Hero image 2",
-      "imageUrl": "https://picsum.photos/seed/hero2/250/300",
+      "imageUrl": "https://picsum.photos/seed/hero2/200/250",
       "imageHint": "happy student"
     },
     {
@@ -71,6 +71,24 @@
       "description": "Course image 6",
       "imageUrl": "https://picsum.photos/seed/course6/300/200",
       "imageHint": "writing hand"
+    },
+    {
+      "id": "empower-1",
+      "description": "Empower image 1",
+      "imageUrl": "https://picsum.photos/seed/empower1/600/500",
+      "imageHint": "smart child"
+    },
+    {
+      "id": "confidence-1",
+      "description": "Confidence image 1",
+      "imageUrl": "https://picsum.photos/seed/confidence1/600/500",
+      "imageHint": "confident child"
+    },
+    {
+      "id": "building-1",
+      "description": "Building image 1",
+      "imageUrl": "https://picsum.photos/seed/building1/600/400",
+      "imageHint": "children learning"
     }
   ]
 }

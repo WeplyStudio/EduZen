@@ -16,8 +16,7 @@ type CourseCardProps = {
 export function CourseCard({ title, imageUrl, imageHint, color }: CourseCardProps) {
   return (
     <div
-      className="rounded-2xl p-6 flex flex-col justify-between min-h-[250px]"
-      style={{ backgroundColor: color ? color : 'transparent' }}
+      className={cn("rounded-2xl p-6 flex flex-col justify-between min-h-[250px]", color)}
     >
         {imageUrl && (
             <div className="relative h-32 mb-4 rounded-lg overflow-hidden">
